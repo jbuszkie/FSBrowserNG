@@ -9,13 +9,40 @@
     #include "WProgram.h"
 #endif
 
-#include <ESP8266WiFi.h>
+
+#if defined ESP8266
+
+// Includes of ESP8266
+
+#include <ESP8266WiFiMulti.h>
+#include <ESPAsyncTCP.h>
+#ifdef USE_MDNS
+#include <DNSServer.h>
+#include <ESP8266mDNS.h>
+#endif
+
+#elif defined ESP32
+
+// Includes of ESP32
+
+#include <WiFiMulti.h>
+#include <AsyncTCP.h>
+
+#ifdef USE_MDNS
+#include <DNSServer.h>
+#include "ESPmDNS.h"
+#endif
+
+#endif // ESP
+
+
+//#include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <TimeLib.h>
 #include "NtpClientLib.h"
-#include <ESPAsyncTCP.h>
+//#include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-#include <ESP8266mDNS.h>
+//#include <ESP8266mDNS.h>
 #include <FS.h>
 #include <Ticker.h>
 #include <ArduinoOTA.h>
